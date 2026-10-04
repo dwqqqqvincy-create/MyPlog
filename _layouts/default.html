@@ -1,22 +1,22 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f8f7f4">
-    <title>{% if page.title == 'Home' %}{{ site.title }}{% else %}{{ page.title }} — {{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  </head>
-  <body>
-    <header class="topbar">
-      <a class="wordmark" href="{{ '/' | relative_url }}">little days<span>®</span></a>
-      <nav aria-label="Main navigation"><a href="{{ '/' | relative_url }}" {% if page.title == 'Home' %}aria-current="page"{% endif %}>About</a><a href="{{ '/plog/' | relative_url }}" {% if page.title == 'Plog' or page.layout == 'post' %}aria-current="page"{% endif %}>Plog <span class="nav-count">{{ site.posts.size | prepend: '0' | slice: -2, 2 }}</span></a></nav>
-    </header>
-    <main>{{ content }}</main>
-    <footer class="footer"><span>Made slowly, somewhere on the internet.</span><span>© {{ site.time | date: '%Y' }} · <a href="{{ '/' | relative_url }}">Back to top ↑</a></span></footer>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f7f4">
+<title>{% if page.title == 'Home' %}{{ site.title }}{% else %}{{ page.title }} — {{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=avatar">
+</head>
+<body>
+<header class="topbar">
+<a class="wordmark" href="{{ '/' | relative_url }}">little days<span>®</span></a>
+<nav aria-label="Main navigation"><a href="{{ '/' | relative_url }}" {% if page.title == 'Home' %}aria-current="page"{% endif %}>About</a><a href="{{ '/plog/' | relative_url }}" {% if page.title == 'Plog' or page.layout == 'post' %}aria-current="page"{% endif %}>Plog <span class="nav-count">{{ site.posts.size | prepend: '0' | slice: -2, 2 }}</span></a></nav>
+</header>
+<main>{{ content }}</main>
+<footer class="footer"><span>Made slowly, somewhere on the internet.</span><span>© {{ site.time | date: '%Y' }} · <a href="{{ '/' | relative_url }}">Back to top ↑</a></span></footer>
+</body>
 </html>
