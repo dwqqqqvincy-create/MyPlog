@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<section class="archive-head"><span class="eyebrow">FIELD NOTES & FRAGMENTS</span><h1>A little Plog<span class="period">.</span></h1><p>A place for the things I want to remember. No particular order, except the order they happened.</p><div class="archive-total">{{ site.posts.size }} ENTRIES <span>·</span> MOST RECENT FIRST</div></section>
+<section class="entry-list">
+  {% for post in site.posts %}
+  <article class="entry-row"><a class="entry-image" href="{{ post.url | relative_url }}" style="--photo:url('{{ post.cover }}')"><span class="image-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><span class="image-open">↗</span></a><div class="entry-copy"><div class="entry-date">{{ post.date | date: '%B %-d, %Y' }}{% if post.location %}<span>·</span>{{ post.location }}{% endif %}</div><h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2><p>{{ post.excerpt | strip_html | strip_newlines | truncate: 150 }}</p><div class="tag-list">{% for tag in post.tags %}<span>#{{ tag }}</span>{% endfor %}</div><a class="read-link" href="{{ post.url | relative_url }}">OPEN NOTE <span>↗</span></a></div></article>
+  {% endfor %}
+</section>

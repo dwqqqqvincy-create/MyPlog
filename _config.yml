@@ -1,0 +1,19 @@
+title: "Lin's Plog"
+description: "A small collection of days, places, and things worth remembering."
+url: ""
+baseurl: ""
+markdown: kramdown
+permalink: /plog/:year/:month/:day/:title/
+collections:
+  pages:
+    output: true
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+plugins:
+  - jekyll-feed
+exclude:
+  - README.md
