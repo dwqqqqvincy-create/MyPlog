@@ -8,7 +8,7 @@ layout: default
 <section class="entry-grid">
   {% for post in site.posts %}
   <article class="entry-card">
-    <a class="entry-image" href="{{ post.url | relative_url }}" style="--photo:url('{{ post.cover }}')" aria-label="Open {{ post.title }}"><span class="image-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><span class="image-open">↗</span></a>
+    <a class="entry-image" href="{{ post.url | relative_url }}" style="--photo:url('{{ post.cover | relative_url }}')" aria-label="Open {{ post.title }}"><span class="image-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><span class="image-open">↗</span></a>
     <div class="entry-copy"><div class="entry-date">{{ post.date | date: '%b %-d, %Y' }}{% if post.location %}<span>·</span>{{ post.location }}{% endif %}</div><h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2><p>{{ post.excerpt | strip_html | strip_newlines | truncate: 130 }}</p><div class="entry-card-foot"><div class="tag-list">{% for tag in post.tags %}<span>#{{ tag }}</span>{% endfor %}</div><a class="read-link" href="{{ post.url | relative_url }}">READ NOTE <span>↗</span></a></div></div>
   </article>
   {% endfor %}
