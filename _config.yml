@@ -1,7 +1,7 @@
 title: "Lin's Plog"
 description: "A small collection of days, places, and things worth remembering."
 url: ""
-baseurl: ""
+baseurl: "/MyPlog"
 markdown: kramdown
 permalink: /plog/:year/:month/:day/:title/
 collections:
