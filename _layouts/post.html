@@ -1,4 +1,31 @@
 ---
 layout: default
 ---
-<article class="post-page"><a class="back-link" href="{{ '/plog/' | relative_url }}">← ALL ENTRIES</a><header class="post-head"><div class="entry-date">{{ page.date | date: '%B %-d, %Y' }}{% if page.location %}<span>·</span>{{ page.location }}{% endif %}</div><h1>{{ page.title }}<span class="period">.</span></h1><div class="tag-list">{% for tag in page.tags %}<span>#{{ tag }}</span>{% endfor %}</div></header><div class="post-cover" style="--photo:url('{{ page.cover | relative_url }}')"></div><div class="post-content">{{ content }}</div><div class="post-end">— END OF NOTE —</div><nav class="post-nav">{% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% else %}<span></span>{% endif %}{% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}</nav></article>
+<article class="post-page">
+  <a class="back-link" href="{{ '/plog/' | relative_url }}">← ALL ENTRIES</a>
+  <header class="post-head">
+    <div class="entry-date">{{ page.date | date: '%B %-d, %Y' }}{% if page.location %}<span>·</span>{{ page.location }}{% endif %}</div>
+    <h1>{{ page.title }}<span class="period">.</span></h1>
+    <div class="tag-list">{% for tag in page.tags %}<span>#{{ tag }}</span>{% endfor %}</div>
+  </header>
+  {% assign is_gated = false %}{% if page.access == 'question' or page.access == 'key' %}{% assign is_gated = true %}{% endif %}
+  {% if is_gated %}
+    <section class="access-gate" data-access-gate data-mode="{{ page.access | escape }}" data-answer="{{ page.answer | downcase | strip | escape }}" data-key="{{ page.key | strip | escape }}" aria-labelledby="access-title">
+      <span class="eyebrow">A PRIVATE NOTE</span>
+      <h2 id="access-title">A little something just for you.</h2>
+      <p>{% if page.access == 'question' %}{{ page.question | default: 'Answer the question to continue.' | escape }}{% else %}This note is for people with the key.{% endif %}</p>
+      <form class="access-form">
+        <label class="visually-hidden" for="access-response">{% if page.access == 'question' %}Your answer{% else %}Access key{% endif %}</label>
+        <input id="access-response" name="response" type="{% if page.access == 'key' %}password{% else %}text{% endif %}" autocomplete="off" required placeholder="{% if page.access == 'question' %}Type your answer{% else %}Enter the key{% endif %}">
+        <button type="submit">Open note <span>↗</span></button>
+      </form>
+      <p class="access-error" data-access-error role="status" hidden>That doesn't match. Please try again.</p>
+    </section>
+    <div class="gated-content" data-gated-content hidden>{% if page.cover %}<div class="post-cover" style="--photo:url('{{ page.cover | relative_url }}')"></div>{% endif %}<div class="post-content">{{ content }}</div></div>
+  {% else %}
+    {% if page.cover %}<div class="post-cover" style="--photo:url('{{ page.cover | relative_url }}')"></div>{% endif %}
+    <div class="post-content">{{ content }}</div>
+  {% endif %}
+  <div class="post-end">— END OF NOTE —</div>
+  <nav class="post-nav">{% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% else %}<span></span>{% endif %}{% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}</nav>
+</article>
