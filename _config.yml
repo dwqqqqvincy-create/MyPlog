@@ -1,7 +1,7 @@
 title: "Vinci's Plog"
 description: "A small collection of days, places, and things worth remembering."
-url: ""
-baseurl: "/MyPlog"
+url: "https://dwqqqqvincy-create.github.io"
+baseurl: ""
 markdown: kramdown
 permalink: /plog/:year/:month/:day/:title/
 collections:
